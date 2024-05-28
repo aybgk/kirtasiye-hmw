@@ -1,0 +1,17 @@
+body{
+    background-color: #2D2D2D;
+    color: #E0E0E0;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .form-box {
+    width: 200vh;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
