@@ -12,29 +12,121 @@
     <title>Sign Up</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="index.html"> <i class="fa-solid fa-graduation-cap" style="color: #6B8E23;"></i> </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="index.html"> <i class="fa-solid fa-graduation-cap" style="color: #6B8E23;"></i> Stationery </a>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html"> <i class="fa-solid fa-house"></i> Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.html"> <i class="fa-solid fa-user-graduate"></i> Login </a>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link" href="signup.html"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-          </form>
+      <div class="mx-auto">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2 custom" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html"> <i class="fa-solid fa-house"></i> Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="login.html"> <i class="fa-solid fa-user-graduate"></i> Login </a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="signup.html"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> <i class="fa-solid fa-cart-shopping"></i>  </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+      
+      <div class="container">
+        <div class="form-box">
+            <form class="needs-validation" id="userForm" novalidate>
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="firstName">First name</label>
+                  <input type="text" class="form-control" id="firstNameS" placeholder="First name" required>
+                  <div class="invalid-feedback">
+                    Please choose a first name.
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="lastName">Last name</label>
+                  <input type="text" class="form-control" id="lastNameS" placeholder="Last name" required>
+                  <div class="invalid-feedback">
+                    Please choose a last name.
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="username">Username</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="usernameS" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-3 mb-3">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="emailS" placeholder="Email" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid email.
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="phoneNumber">Phone Number</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">0</span>
+                    </div>
+                    <input type="text" class="form-control" id="phoneNumberS" maxlength="10" minlength="10" placeholder="Phone Number" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                      Please provide a valid phone number.
+                    </div>
+                  </div>  
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="passwordS" minlength="8" placeholder="Password" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid password (must be at least 8 characters).
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-dark" type="submit">Create New User</button>
+            </form>
         </div>
-      </nav>
+
+      <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+      </script>
+
 </body>
 </html>

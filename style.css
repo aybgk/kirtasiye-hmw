@@ -3,15 +3,19 @@ body{
     color: #E0E0E0;
 }
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
   
-  .form-box {
-    width: 200vh;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+.form-box {
+  width: 200vh;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.custom{
+  margin-left: 30vh;
+}
