@@ -21,10 +21,10 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           
           <div class="mx-auto">
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2 custom" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0 mr-auto" onsubmit="return searchProductsNavbar()">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInputNavbar">
               <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+          </form>
           </div>
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
@@ -35,9 +35,6 @@
               </li>
             <li class="nav-item">
               <a class="nav-link" href="signup.html"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> <i class="fa-solid fa-cart-shopping"></i>  </a>
             </li>
           </ul>
         </div>
@@ -70,6 +67,90 @@
         </a>
       </div>
 
-      
+      <div class="container my-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col mb-4">
+            <div class="card h-100 shadow-sm">
+              <img src="imgs/pexels-vics-7853813.jpg" class="card-img-top" alt="Journal">
+              <div class="card-body">
+                <h5 class="card-title text-dark">Floral Journal</h5>
+                <p class="card-text text-dark">This is a journal with flower designs.</p>
+                <a href="#" class="btn btn-secondary">See Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100 shadow-sm">
+              <img src="" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-dark">Card title</h5>
+                <p class="card-text text-dark">This is a short card.</p>
+                <a href="#" class="btn btn-secondary">See Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100 shadow-sm">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-dark">Card title</h5>
+                <p class="card-text text-dark">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-secondary">See Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100 shadow-sm">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-dark">Card title</h5>
+                <p class="card-text text-dark">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <a href="#" class="btn btn-secondary">See Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const username = localStorage.getItem('username');
+        
+            if (username) {
+                const navBar = document.querySelector('.navbar-nav');
+                const loginLink = navBar.querySelector('.nav-link[href="login.html"]');
+                const signUpLink = navBar.querySelector('.nav-link[href="signup.html"]');
+        
+                if (loginLink) loginLink.remove();
+                if (signUpLink) signUpLink.remove();
+        
+                const userDropdown = document.createElement('div');
+                userDropdown.className = 'nav-item dropdown';
+                userDropdown.innerHTML = `
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa-solid fa-user"></i> ${username}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#" id="logout">Logout</a>
+                  </div>
+                `;
+                navBar.appendChild(userDropdown);
+
+                // Logout functionality
+                const logoutLink = userDropdown.querySelector('#logout');
+                logoutLink.addEventListener('click', function (event) {
+                  event.preventDefault();
+                  localStorage.removeItem('username');
+                  window.location.reload(); // Reload the page after logout
+                });
+            }
+        });
+
+        
+      </script>
+        
+        
 </body>
 </html>

@@ -8,6 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Login</title>
 </head>
@@ -19,7 +21,6 @@
     <a class="navbar-brand" href="index.html"> <i class="fa-solid fa-graduation-cap" style="color: #6B8E23;"></i> Stationery </a>
   
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      
       <div class="mx-auto">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2 custom" type="search" placeholder="Search" aria-label="Search">
@@ -30,80 +31,136 @@
         <li class="nav-item active">
           <a class="nav-link" href="index.html"> <i class="fa-solid fa-house"></i> Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="login.html"> <i class="fa-solid fa-user-graduate"></i> Login </a>
-          </li>
-        <li class="nav-item">
+        <li class="nav-item" id="login-link">
+          <a class="nav-link" href="login.html"> <i class="fa-solid fa-user-graduate"></i> Login </a>
+        </li>
+        <li class="nav-item" id="signup-link">
           <a class="nav-link" href="signup.html"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"> <i class="fa-solid fa-cart-shopping"></i>  </a>
+        <li class="nav-item" id="user-link" style="display: none;">
+          <a class="nav-link" href="#"> <i class="fa-solid fa-user"></i> <span id="username-display"></span></a>
         </li>
       </ul>
     </div>
   </nav>
 
-      <div class="container">
-        <div class="form-box">
-            <form class="needs-validation" novalidate>
-              <div class="form-row">
-            
-                <div class="col-md-4 mb-3">
-                  <label for="username">Username</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    </div>
-                    <input type="text" class="form-control" id="usernameL" placeholder="Username" aria-describedby="inputGroupPrepend" required>
-                    <div class="invalid-feedback">
-                      Please enter your username.
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="emailL" placeholder="Email" required>
-                  <div class="invalid-feedback">
-                    Please enter your email.
-                  </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                  <label for="phoneNumber">Phone Number</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupPrepend">0</span>
-                    </div>
-                  <input type="text" class="form-control" id="phoneNumberL" maxlength="10" minlength="10" placeholder="Phone Number" aria-describedby="inputGroupPrepend" required>
-                  <div class="invalid-feedback">
-                    Please enter your phone number.
-                  </div>
-                </div>
+  <div class="container">
+    <div class="form-box">
+        <form id="loginForm" class="needs-validation" novalidate>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+              </div>
+              <input type="text" class="form-control" id="usernameL" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please enter your username.
               </div>
             </div>
-              <button class="btn btn-dark" type="submit">Enter User</button>
-            </form>
-        </div>
-      </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="passwordL" placeholder="Password" required>
+            <div class="invalid-feedback">
+              Please enter your password.
+            </div>
+          </div>
+          <button class="btn btn-dark" type="submit">Enter User</button>
+        </form>
+    </div>
+  </div>
 
-      <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
         'use strict';
         window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
         }, false);
-      })();
-      </script>
+    })();
+
+    // Custom login validation with toast messages
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (this.checkValidity() === false) {
+            this.classList.add('was-validated');
+            return;
+        }
+
+        const username = document.getElementById('usernameL').value;
+        const password = document.getElementById('passwordL').value;
+
+        fetch('data.json')
+            .then(response => response.json())
+            .then(users => {
+                const user = users.find(user => user.username === username && user.password === password);
+                if (user) {
+                    Toastify({
+                        text: "Login successful!",
+                        duration: 3000,
+                        gravity: "bottom",
+                        position: "center",
+                        backgroundColor: "#4caf50"
+                    }).showToast();
+
+                    // Store the username in localStorage
+                    localStorage.setItem('username', user.username);
+
+                    // Update the navbar
+                  /*  document.getElementById('login-link').style.display = 'none';
+                    document.getElementById('signup-link').style.display = 'none';
+                    document.getElementById('username-display').innerText = user.username;
+                    document.getElementById('user-link').style.display = 'block'; */
+
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 3000);
+                } else {
+                    Toastify({
+                        text: "Invalid username or password",
+                        duration: 3000,
+                        gravity: "bottom",
+                        position: "center",
+                        backgroundColor: "#f44336"
+                    }).showToast();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+                Toastify({
+                    text: "An error occurred. Please try again later.",
+                    duration: 3000,
+                    gravity: "bottom",
+                    position: "center",
+                    backgroundColor: "#f44336"
+                }).showToast();
+            });
+    });
+
+    // Check if user is logged in
+    document.addEventListener('DOMContentLoaded', function() {
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('login-link').style.display = 'none';
+            document.getElementById('signup-link').style.display = 'none';
+            document.getElementById('username-display').innerText = username;
+            document.getElementById('user-link').style.display = 'block';
+        }
+    });
+  </script>
 </body>
 </html>
