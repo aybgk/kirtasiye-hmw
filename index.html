@@ -19,10 +19,9 @@
         <a class="navbar-brand" href="#"> <i class="fa-solid fa-graduation-cap" style="color: #6B8E23;"></i> Stationery </a>
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          
           <div class="mx-auto">
-            <form class="form-inline my-2 my-lg-0 mr-auto" onsubmit="return searchProductsNavbar()">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInputNavbar">
+            <form class="form-inline my-2 my-lg-0 mr-auto" action="search.html" method="get">
+              <input class="form-control custom mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="searchInputNavbar" name="query">
               <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
           </form>
           </div>
@@ -67,90 +66,112 @@
         </a>
       </div>
 
-      <div class="container my-4">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col mb-4">
-            <div class="card h-100 shadow-sm">
-              <img src="imgs/pexels-vics-7853813.jpg" class="card-img-top" alt="Journal">
-              <div class="card-body">
-                <h5 class="card-title text-dark">Floral Journal</h5>
-                <p class="card-text text-dark">This is a journal with flower designs.</p>
-                <a href="#" class="btn btn-secondary">See Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-4">
-            <div class="card h-100 shadow-sm">
-              <img src="" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-dark">Card title</h5>
-                <p class="card-text text-dark">This is a short card.</p>
-                <a href="#" class="btn btn-secondary">See Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-4">
-            <div class="card h-100 shadow-sm">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-dark">Card title</h5>
-                <p class="card-text text-dark">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-secondary">See Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-4">
-            <div class="card h-100 shadow-sm">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-dark">Card title</h5>
-                <p class="card-text text-dark">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <a href="#" class="btn btn-secondary">See Details</a>
-              </div>
-            </div>
-          </div>
+      <div class="container my-4 custom-card bruh">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="productContainer">
+          <!-- Product cards will be dynamically generated here -->
         </div>
       </div>
 
+<footer class="bg-dark text-white mt-5">
+  <div class="container py-4">
+      <div class="row">
+          <div class="col-md-4">
+              <h5>About Us</h5>
+              <p>We offer a wide range of stationery products, including journals, pens, sticky notes, and more. Our goal is to provide high-quality products for all your office and personal needs.</p>
+          </div>
+          <div class="col-md-4">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Home</a></li>
+                  <li><a href="login.html" class="text-white">Login</a></li>
+                  <li><a href="signup.html" class="text-white">Sign Up</a></li>
+                  <li><a href="search.html" class="text-white">Search</a></li>
+              </ul>
+          </div>
+          <div class="col-md-4">
+              <h5>Contact Us</h5>
+              <ul class="list-unstyled">
+                  <li><i class="fas fa-envelope"></i> email@stationery.com</li>
+                  <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                  <li><i class="fas fa-map-marker-alt"></i> 123 Stationery St, New York, NY</li>
+              </ul>
+              <h5>Follow Us</h5>
+              <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+      </div>
+  </div>
+  <div class="bg-secondary text-center py-2">
+      <p class="mb-0">&copy; 2024 Stationery. All Rights Reserved.</p>
+  </div>
+</footer>
 
 
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const username = localStorage.getItem('username');
-        
-            if (username) {
-                const navBar = document.querySelector('.navbar-nav');
-                const loginLink = navBar.querySelector('.nav-link[href="login.html"]');
-                const signUpLink = navBar.querySelector('.nav-link[href="signup.html"]');
-        
-                if (loginLink) loginLink.remove();
-                if (signUpLink) signUpLink.remove();
-        
-                const userDropdown = document.createElement('div');
-                userDropdown.className = 'nav-item dropdown';
-                userDropdown.innerHTML = `
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa-solid fa-user"></i> ${username}
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#" id="logout">Logout</a>
-                  </div>
-                `;
-                navBar.appendChild(userDropdown);
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const username = localStorage.getItem('username');
 
-                // Logout functionality
-                const logoutLink = userDropdown.querySelector('#logout');
-                logoutLink.addEventListener('click', function (event) {
-                  event.preventDefault();
-                  localStorage.removeItem('username');
-                  window.location.reload(); // Reload the page after logout
-                });
-            }
+      if (username) {
+          const navBar = document.querySelector('.navbar-nav');
+          const loginLink = navBar.querySelector('.nav-link[href="login.html"]');
+          const signUpLink = navBar.querySelector('.nav-link[href="signup.html"]');
+
+          if (loginLink) loginLink.remove();
+          if (signUpLink) signUpLink.remove();
+
+          const userDropdown = document.createElement('div');
+          userDropdown.className = 'nav-item dropdown';
+          userDropdown.innerHTML = `
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-user"></i> ${username}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#" id="logout">Logout</a>
+            </div>
+          `;
+          navBar.appendChild(userDropdown);
+
+          // Logout functionality
+          const logoutLink = userDropdown.querySelector('#logout');
+          logoutLink.addEventListener('click', function (event) {
+              event.preventDefault();
+              localStorage.removeItem('username');
+              window.location.reload(); // Reload the page after logout
+          });
+      }
+
+      // Fetch products from JSON file
+      fetch('products.json')
+          .then(response => response.json())
+          .then(products => {
+              generateProductCards(products);
+          })
+          .catch(error => {
+              console.error('Error fetching products:', error);
+          });
+
+      function generateProductCards(products) {
+        const productContainer = document.getElementById('productContainer');
+        products.forEach(product => {
+          const productCard = document.createElement('div');
+          productCard.className = 'col mb-4';
+          productCard.innerHTML = `
+            <div class="card h-100 shadow-sm">
+              <img src="${product.image}" class="card-img-top" alt="${product.title}">
+              <div class="card-body">
+                <h5 class="card-title text-dark">${product.title}</h5>
+                <p class="card-text text-dark">${product.description}</p>
+                <a href="detail.html?id=${product.id}" class="btn btn-secondary">See Details</a>
+              </div>
+            </div>
+          `;
+          productContainer.appendChild(productCard);
         });
+      }
+  });
+</script>
 
-        
-      </script>
-        
-        
 </body>
 </html>

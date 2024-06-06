@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Product Detail</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"> <i class="fa-solid fa-graduation-cap" style="color: #6B8E23;"></i> Stationery </a>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div class="mx-auto">
+                <form class="form-inline my-2 my-lg-0 mr-auto" action="search.html" method="get">
+                    <input class="form-control custom mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInputNavbar" name="query">
+                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"> <i class="fa-solid fa-house"></i> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html"> <i class="fa-solid fa-user-graduate"></i> Login </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-6">
+                <img id="productImage" class="img-fluid" alt="Product Image">
+            </div>
+            <div class="col-md-6">
+                <h2 id="productTitle"></h2>
+                <p id="productDescription"></p>
+                <p><strong>Price:</strong> <span id="productPrice"></span></p>
+                <div id="commentsSection">
+                    <h3>Comments</h3>
+                    <ul id="commentsList"></ul>
+                </div>
+                <div class="d-flex">
+                    <button id="addToCartBtn" class="btn btn-primary mt-3 mr-2">Add to Cart</button>
+                    <button id="addedToCartBtn" class="btn btn-success mt-3 d-none">Added to Cart</button>
+                    <button class="btn btn-secondary mt-3" onclick="window.history.back()">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="container my-4">
+        <h3>Comments</h3>
+        <div id="commentsList"></div>
+        <form id="commentForm">
+            <div class="form-group">
+                <label for="comment">Add a comment:</label>
+                <textarea class="form-control" id="comment" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+    </div>
+
+<footer class="bg-dark text-white mt-5">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p>We offer a wide range of stationery products, including journals, pens, sticky notes, and more. Our goal is to provide high-quality products for all your office and personal needs.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Home</a></li>
+                    <li><a href="login.html" class="text-white">Login</a></li>
+                    <li><a href="signup.html" class="text-white">Sign Up</a></li>
+                    <li><a href="search.html" class="text-white">Search</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-envelope"></i> email@stationery.com</li>
+                    <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Stationery St, New York, NY</li>
+                </ul>
+                <h5>Follow Us</h5>
+                <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="bg-secondary text-center py-2">
+        <p class="mb-0">&copy; 2024 Stationery. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        function displayProductDetails(product) {
+            if (product) {
+                document.getElementById('productTitle').textContent = product.title;
+                document.getElementById('productDescription').textContent = product.description;
+                document.getElementById('productImage').src = product.image;
+                document.getElementById('productImage').alt = product.title;
+                document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
+                
+                // Display comments
+                const commentsList = document.getElementById('commentsList');
+                commentsList.innerHTML = '';
+                if (product.comments && product.comments.length > 0) {
+                    product.comments.forEach(comment => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${comment.username}: ${comment.text}`;
+                        commentsList.appendChild(listItem);
+                    });
+                } else {
+                    const noCommentsMessage = document.createElement('p');
+                    noCommentsMessage.textContent = 'No comments yet.';
+                    commentsList.appendChild(noCommentsMessage);
+                }
+            } else {
+                document.getElementById('productTitle').textContent = 'Product not found';
+                document.getElementById('productDescription').textContent = '';
+                document.getElementById('productImage').src = '';
+                document.getElementById('productImage').alt = 'No image available';
+            }
+        }
+
+        fetch('products.json')
+            .then(response => response.json())
+            .then(products => {
+                const product = products.find(p => p.id == productId);
+                displayProductDetails(product);
+            })
+            .catch(error => {
+                console.error('Error fetching product data:', error);
+                displayProductDetails(null);
+            });
+    });
+
+    function showToast(message, backgroundColor) {
+    Toastify({
+        text: message,
+        duration: 3000,
+        gravity: "bottom",
+        position: "center",
+        backgroundColor: backgroundColor
+    }).showToast();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Add event listener for "Add to Cart" button
+    document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+
+    function addToCart(event) {
+        event.preventDefault();
+        // Logic to add product to cart (send request to backend)
+        // Update UI to show "Added to Cart" message
+        document.getElementById('addToCartBtn').classList.add('d-none');
+        document.getElementById('addedToCartBtn').classList.remove('d-none');
+
+        // Show Toastify message
+        showToast('Product added to cart successfully!', '#4caf50');
+    }
+
+    // Add event listener for "Add Comment" button
+    document.getElementById('commentForm').addEventListener('submit', submitComment);
+
+    function submitComment(event) {
+        event.preventDefault();
+        const commentText = document.getElementById('comment').value;
+        // Logic to submit comment (send request to backend)
+        // After successful submission, add the comment to the UI
+        const newComment = { username: 'User', text: commentText }; // For demo purposes, assuming the username is "User"
+        const commentItem = document.createElement('li');
+        commentItem.textContent = `${newComment.username}: ${newComment.text}`;
+        document.getElementById('commentsList').appendChild(commentItem);
+        // Clear the comment textarea after submission
+        document.getElementById('comment').value = '';
+
+        // Show Toastify message
+        showToast('Comment added successfully!', '#4caf50');
+    }
+});
+
+</script>
+
+
+
+
+</body>
+</html>
+

@@ -16,35 +16,32 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="index.html"> <i class="fa-solid fa-graduation-cap" style="color: #6B8E23;"></i> Stationery </a>
   
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <div class="mx-auto">
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2 custom" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html"> <i class="fa-solid fa-house"></i> Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item" id="login-link">
-          <a class="nav-link" href="login.html"> <i class="fa-solid fa-user-graduate"></i> Login </a>
-        </li>
-        <li class="nav-item" id="signup-link">
-          <a class="nav-link" href="signup.html"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
-        </li>
-        <li class="nav-item" id="user-link" style="display: none;">
-          <a class="nav-link" href="#"> <i class="fa-solid fa-user"></i> <span id="username-display"></span></a>
-        </li>
-      </ul>
+        <div class="mx-auto">
+            <form class="form-inline my-2 my-lg-0 mr-auto" action="search.html" method="get">
+                <input class="form-control custom mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="searchInputNavbar" name="query">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html"> <i class="fa-solid fa-house"></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html"> <i class="fa-solid fa-user-graduate"></i> Login </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="signup.html"> <i class="fa-solid fa-user-plus"></i> Sign Up </a>
+            </li>
+        </ul>
     </div>
-  </nav>
+</nav>
 
-  <div class="container">
+  <div class="container custom-card">
     <div class="form-box">
         <form id="loginForm" class="needs-validation" novalidate>
           <div class="form-group">
@@ -70,6 +67,44 @@
         </form>
     </div>
   </div>
+
+  <!-- Footer -->
+<footer class="bg-dark text-white mt-5 custom-footer">
+  <div class="container py-4">
+      <div class="row">
+          <div class="col-md-4">
+              <h5>About Us</h5>
+              <p>We offer a wide range of stationery products, including journals, pens, sticky notes, and more. Our goal is to provide high-quality products for all your office and personal needs.</p>
+          </div>
+          <div class="col-md-4">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Home</a></li>
+                  <li><a href="login.html" class="text-white">Login</a></li>
+                  <li><a href="signup.html" class="text-white">Sign Up</a></li>
+                  <li><a href="search.html" class="text-white">Search</a></li>
+              </ul>
+          </div>
+          <div class="col-md-4">
+              <h5>Contact Us</h5>
+              <ul class="list-unstyled">
+                  <li><i class="fas fa-envelope"></i> email@stationery.com</li>
+                  <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                  <li><i class="fas fa-map-marker-alt"></i> 123 Stationery St, New York, NY</li>
+              </ul>
+              <h5>Follow Us</h5>
+              <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+      </div>
+  </div>
+  <div class="bg-secondary text-center py-2">
+      <p class="mb-0">&copy; 2024 Stationery. All Rights Reserved.</p>
+  </div>
+</footer>
+
 
   <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

@@ -1,0 +1,38 @@
+[
+    { 
+        "id": 1, 
+        "title": "Floral Journal", 
+        "category": "Journals", 
+        "description": "A journal with flower designs.", 
+        "image": "imgs/Floral Journal.jpg",
+        "price": 10.99,
+        "comments": [
+            { "username": "User1", "text": "Great journal!" },
+            { "username": "User2", "text": "Love the design." }
+        ]
+    },
+    { 
+        "id": 2, 
+        "title": "Sticky Notes", 
+        "category": "Notes", 
+        "description": "Colorful sticky notes for your reminders.", 
+        "image": "imgs/Sticky Notes.jpg",
+        "price": 5.99,
+        "comments": [
+            { "username": "User3", "text": "Very useful." },
+            { "username": "User4", "text": "Good quality." }
+        ]
+    },
+    { 
+        "id": 3, 
+        "title": "Fountain Pen", 
+        "category": "Pens", 
+        "description": "Elegant fountain pen for smooth writing.", 
+        "image": "imgs/Fountain Pen.jpg",
+        "price": 15.99,
+        "comments": [
+            { "username": "User5", "text": "Writes beautifully." },
+            { "username": "User6", "text": "Highly recommend." }
+        ]
+    }
+]
