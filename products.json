@@ -7,8 +7,8 @@
         "image": "imgs/Floral Journal.jpg",
         "price": 10.99,
         "comments": [
-            { "username": "User1", "text": "Great journal!" },
-            { "username": "User2", "text": "Love the design." }
+            { "username": "User1", "text": "Great journal!", "rating": 5 },
+            { "username": "User2", "text": "Love the design.", "rating": 4 }
         ]
     },
     { 
@@ -19,8 +19,8 @@
         "image": "imgs/Sticky Notes.jpg",
         "price": 5.99,
         "comments": [
-            { "username": "User3", "text": "Very useful." },
-            { "username": "User4", "text": "Good quality." }
+            { "username": "User3", "text": "Very useful.", "rating": 4 },
+            { "username": "User4", "text": "Good quality.", "rating": 3 }
         ]
     },
     { 
@@ -31,8 +31,8 @@
         "image": "imgs/Fountain Pen.jpg",
         "price": 15.99,
         "comments": [
-            { "username": "User5", "text": "Writes beautifully." },
-            { "username": "User6", "text": "Highly recommend." }
+            { "username": "User5", "text": "Writes beautifully.", "rating": 5 },
+            { "username": "User6", "text": "Highly recommend.", "rating": 4 }
         ]
     }
 ]
